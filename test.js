@@ -16,12 +16,12 @@ var data = [
 
 test('Default', function( t ){
 	t.plan(1);
-	
+
 	pull(
 		pull.values(data),
 		stringify(),
 		pull.concat(function( err, data ){
-			t.equal(data, '{"age":25}\n{"age":24}');
+			t.equal(data, '{"age":25}\n{"age":24}\n');
 		})
 	);
 });
@@ -53,7 +53,7 @@ test('Zero item with defaults', function( t ){
 		pull.values([]),
 		stringify(),
 		pull.concat(function( err, data ){
-			t.equal(data, '');
+			t.equal(data, '\n');
 		})
 	);
 });
@@ -65,7 +65,7 @@ test('One item with defaults', function( t ){
 		pull.values([ 'A' ]),
 		stringify(),
 		pull.concat(function( err, data ){
-			t.equal(data, '"A"');
+			t.equal(data, '"A"\n');
 		})
 	);
 });

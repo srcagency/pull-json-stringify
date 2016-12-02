@@ -8,7 +8,7 @@ function stringify( opts ){
 	var indent = opts.indent || '';
 	var open = opts.open || '';
 	var separator = opts.separator || '\n';
-	var close = opts.close || '';
+	var close = opts.close || '\n';
 	var stringifier = opts.stringifier || JSON.stringify;
 
 	return function( read ){
