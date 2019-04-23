@@ -101,3 +101,20 @@ test('One item with custom `open`, `close` and `separator`', function( t ){
 		})
 	);
 });
+
+test('Stream using `undefined` as "end" argument', function( t ){
+	t.plan(1);
+	var c = 0
+
+	pull(
+		(end, cb) => {
+			if (end) return cb(end)
+			if (c === 3) return cb(true)
+			cb(undefined, c++)
+		},
+		stringify(),
+		pull.concat(function( err, data ){
+			t.equal(data, '0\n1\n2\n');
+		})
+	);
+});

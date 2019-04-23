@@ -20,7 +20,7 @@ function stringify( opts ){
 				return cb(true);
 
 			read(abort, function( end, data ){
-				if (end !== null) {
+				if (end) {
 					if (end === true)
 						return (closed = true) && cb(null, opened
 							? close
